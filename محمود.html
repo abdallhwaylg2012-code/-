@@ -1,0 +1,2531 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl" data-theme="light">
+<head>
+  <!-- ===== Meta Tags & SEO ===== -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="الموقع الرسمي للشيخ محمود إبراهيم سليم - الإمام والخطيب ومدرس القرآن الكريم والعلوم الشرعية">
+  <meta name="keywords" content="الشيخ محمود إبراهيم سليم, إمام, خطيب, قرآن كريم, علوم شرعية, دسوق">
+  <meta name="author" content="الشيخ محمود إبراهيم سليم">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="الشيخ محمود إبراهيم سليم - الإمام والخطيب">
+  <meta property="og:description" content="الموقع الرسمي للشيخ محمود إبراهيم سليم - الإمام والخطيب ومدرس القرآن الكريم والعلوم الشرعية">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="ar_AR">
+  <meta name="theme-color" content="#0B3D2E">
+  <title>الشيخ محمود إبراهيم سليم | الإمام والخطيب</title>
+
+  <!-- ===== Favicon - نجمة إسلامية ===== -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpolygon points='50,2 58.8,26.9 81.8,18.2 73.1,40.4 98,50 73.1,59.6 81.8,81.8 58.8,73.1 50,98 41.2,73.1 18.2,81.8 26.9,59.6 2,50 26.9,40.4 18.2,18.2 41.2,26.9' fill='%230B3D2E' stroke='%23C9A227' stroke-width='2'/%3E%3C/svg%3E">
+
+  <!-- ===== Google Fonts - Cairo ===== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@200;300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================
+       1. CSS Variables & Reset
+       ========================================================== */
+    :root {
+      --primary: #0B3D2E;
+      --primary-light: #0e5a42;
+      --primary-dark: #072a1f;
+      --secondary: #C9A227;
+      --secondary-light: #e8c84a;
+      --secondary-dark: #a07d1e;
+      --bg: #F6F6F4;
+      --bg-alt: #efefec;
+      --text: #1a1a1a;
+      --text-secondary: #555;
+      --text-muted: #888;
+      --card-bg: rgba(255, 255, 255, 0.65);
+      --card-border: rgba(201, 162, 39, 0.12);
+      --nav-bg: rgba(246, 246, 244, 0.88);
+      --shadow-color: rgba(0, 0, 0, 0.08);
+      --white: #FFFFFF;
+      --dark: #121212;
+      --glass-blur: blur(14px);
+      --radius: 16px;
+      --radius-sm: 10px;
+      --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* ===== وضع داكن ===== */
+    [data-theme="dark"] {
+      --bg: #0a0a0a;
+      --bg-alt: #111111;
+      --text: #e8e8e8;
+      --text-secondary: #aaa;
+      --text-muted: #777;
+      --card-bg: rgba(22, 22, 22, 0.7);
+      --card-border: rgba(201, 162, 39, 0.18);
+      --nav-bg: rgba(10, 10, 10, 0.92);
+      --shadow-color: rgba(0, 0, 0, 0.4);
+    }
+
+    /* ===== Reset ===== */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 80px;
+    }
+
+    body {
+      font-family: 'Cairo', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.8;
+      overflow-x: hidden;
+      transition: background-color 0.4s ease, color 0.4s ease;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    ul { list-style: none; }
+    img { max-width: 100%; display: block; }
+    button { cursor: pointer; border: none; background: none; font-family: inherit; }
+
+    /* ==========================================================
+       2. Loading Screen
+       ========================================================== */
+    #loading-screen {
+      position: fixed;
+      inset: 0;
+      z-index: 10000;
+      background: var(--primary);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 28px;
+      transition: opacity 0.6s ease, visibility 0.6s ease;
+    }
+
+    #loading-screen.hidden {
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    .loader-star {
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--secondary), var(--secondary-light), var(--secondary));
+      clip-path: polygon(
+        50% 0%, 58.8% 26.9%, 81.8% 18.2%, 73.1% 40.4%, 98% 50%,
+        73.1% 59.6%, 81.8% 81.8%, 58.8% 73.1%, 50% 98%,
+        41.2% 73.1%, 18.2% 81.8%, 26.9% 59.6%, 2% 50%,
+        26.9% 40.4%, 18.2% 18.2%, 41.2% 26.9%
+      );
+      animation: loaderPulse 1.5s ease-in-out infinite, loaderRotate 3s linear infinite;
+    }
+
+    @keyframes loaderPulse {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+    }
+
+    @keyframes loaderRotate {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+
+    .loader-text {
+      color: var(--secondary);
+      font-size: 1.1rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      opacity: 0.9;
+    }
+
+    /* ==========================================================
+       3. شريط التقدم (Progress Bar)
+       ========================================================== */
+    #progress-bar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 3px;
+      width: 0%;
+      background: linear-gradient(90deg, var(--secondary), var(--secondary-light));
+      z-index: 10001;
+      transition: width 0.1s linear;
+      box-shadow: 0 0 8px rgba(201, 162, 39, 0.5);
+    }
+
+    /* ==========================================================
+       4. تأثير المؤشر (Cursor Glow)
+       ========================================================== */
+    #cursor-glow {
+      position: fixed;
+      width: 250px;
+      height: 250px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,162,39,0.06) 0%, transparent 70%);
+      pointer-events: none;
+      z-index: 9998;
+      transform: translate(-50%, -50%);
+      opacity: 0;
+      transition: opacity 0.4s ease;
+    }
+
+    #cursor-glow.visible {
+      opacity: 1;
+    }
+
+    /* ==========================================================
+       5. شريط التنقل (Navbar)
+       ========================================================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border-bottom: 1px solid var(--card-border);
+      transition: var(--transition);
+    }
+
+    .navbar.scrolled {
+      box-shadow: 0 4px 30px var(--shadow-color);
+    }
+
+    .navbar-inner {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 24px;
+      height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand {
+      font-size: 1.15rem;
+      font-weight: 700;
+      color: var(--primary);
+      white-space: nowrap;
+    }
+
+    [data-theme="dark"] .nav-brand {
+      color: var(--secondary);
+    }
+
+    .nav-brand span {
+      color: var(--secondary);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-links a {
+      padding: 8px 14px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: var(--text-secondary);
+      border-radius: 8px;
+      transition: var(--transition);
+      position: relative;
+    }
+
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--primary);
+      background: rgba(11, 61, 46, 0.06);
+    }
+
+    [data-theme="dark"] .nav-links a:hover,
+    [data-theme="dark"] .nav-links a.active {
+      color: var(--secondary);
+      background: rgba(201, 162, 39, 0.08);
+    }
+
+    .nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* زر التبديل بين الوضعين */
+    .theme-toggle {
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-secondary);
+      transition: var(--transition);
+      background: transparent;
+    }
+
+    .theme-toggle:hover {
+      background: rgba(201, 162, 39, 0.1);
+      color: var(--secondary);
+    }
+
+    .theme-toggle svg {
+      width: 20px;
+      height: 20px;
+    }
+
+    /* زر القائمة للموبايل */
+    .menu-toggle {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border-radius: 10px;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: var(--transition);
+    }
+
+    .menu-toggle:hover {
+      background: rgba(201, 162, 39, 0.1);
+    }
+
+    .menu-toggle svg {
+      width: 24px;
+      height: 24px;
+    }
+
+    /* ===== القائمة للموبايل ===== */
+    .mobile-menu {
+      position: fixed;
+      inset: 0;
+      background: var(--primary);
+      z-index: 999;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      transform: translateX(100%);
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .mobile-menu.active {
+      transform: translateX(0);
+    }
+
+    .mobile-menu a {
+      color: rgba(255,255,255,0.85);
+      font-size: 1.25rem;
+      font-weight: 600;
+      padding: 12px 32px;
+      border-radius: 12px;
+      transition: var(--transition);
+    }
+
+    .mobile-menu a:hover,
+    .mobile-menu a.active {
+      color: var(--secondary);
+      background: rgba(201, 162, 39, 0.1);
+    }
+
+    .mobile-close {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .mobile-close:hover {
+      background: rgba(255,255,255,0.1);
+    }
+
+    .mobile-close svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    /* ==========================================================
+       6. القسم الرئيسي (Hero)
+       ========================================================== */
+    .hero {
+      min-height: 100vh;
+      background: linear-gradient(160deg, var(--primary-dark) 0%, var(--primary) 40%, var(--primary-light) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      padding: 100px 24px 60px;
+    }
+
+    /* نمط إسلامي في الخلفية */
+    .hero-pattern {
+      position: absolute;
+      inset: -50px;
+      background-image:
+        radial-gradient(ellipse at 30% 20%, rgba(201,162,39,0.08) 0%, transparent 50%),
+        radial-gradient(ellipse at 70% 80%, rgba(201,162,39,0.05) 0%, transparent 50%),
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='80' height='80' viewBox='0 0 80 80'%3E%3Cg fill='none' stroke='rgba(201,162,39,0.06)' stroke-width='0.6'%3E%3Crect x='20' y='20' width='40' height='40' transform='rotate(45 40 40)'/%3E%3Crect x='26' y='26' width='28' height='28'/%3E%3Ccircle cx='40' cy='40' r='14'/%3E%3C/g%3E%3C/svg%3E");
+      opacity: 0.8;
+      will-change: transform;
+    }
+
+    /* نور علوي */
+    .hero-glow {
+      position: absolute;
+      top: -200px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 800px;
+      height: 500px;
+      background: radial-gradient(ellipse, rgba(201,162,39,0.1) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-content {
+      max-width: 1200px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      gap: 60px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* صورة الشيخ */
+    .hero-image {
+      flex-shrink: 0;
+    }
+
+    .hero-image-frame {
+      position: relative;
+      padding: 7px;
+      background: linear-gradient(135deg, var(--secondary-dark), var(--secondary), var(--secondary-light), var(--secondary), var(--secondary-dark));
+      border-radius: 24px;
+      box-shadow:
+        0 25px 60px rgba(0,0,0,0.4),
+        0 0 40px rgba(201,162,39,0.15);
+      transition: transform 0.5s ease, box-shadow 0.5s ease;
+    }
+
+    .hero-image-frame:hover {
+      transform: scale(1.03) translateY(-4px);
+      box-shadow:
+        0 30px 70px rgba(0,0,0,0.45),
+        0 0 60px rgba(201,162,39,0.25);
+    }
+
+    .hero-image-frame::before {
+      content: '';
+      position: absolute;
+      inset: 5px;
+      border: 1.5px solid rgba(255,255,255,0.25);
+      border-radius: 20px;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    .hero-image-frame img {
+      width: 320px;
+      height: 380px;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+    }
+
+    /* زخرفة حول الصورة */
+    .hero-image-frame::after {
+      content: '';
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      width: 50px;
+      height: 50px;
+      border-top: 3px solid var(--secondary);
+      border-right: 3px solid var(--secondary);
+      border-radius: 0 12px 0 0;
+      opacity: 0.6;
+    }
+
+    .hero-image-decor {
+      position: absolute;
+      bottom: -15px;
+      left: -15px;
+      width: 50px;
+      height: 50px;
+      border-bottom: 3px solid var(--secondary);
+      border-left: 3px solid var(--secondary);
+      border-radius: 0 0 0 12px;
+      opacity: 0.6;
+    }
+
+    /* نصوص الهيرو */
+    .hero-text {
+      color: white;
+      flex: 1;
+    }
+
+    .hero-bismillah {
+      font-size: 1rem;
+      color: var(--secondary);
+      font-weight: 600;
+      margin-bottom: 8px;
+      opacity: 0.9;
+      letter-spacing: 0.5px;
+    }
+
+    .hero-greeting {
+      font-size: 1.15rem;
+      font-weight: 400;
+      color: rgba(255,255,255,0.8);
+      margin-bottom: 12px;
+    }
+
+    .hero-name {
+      font-size: 2.8rem;
+      font-weight: 900;
+      line-height: 1.25;
+      margin-bottom: 10px;
+      background: linear-gradient(135deg, #ffffff 30%, var(--secondary-light));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: var(--secondary);
+      margin-bottom: 16px;
+      opacity: 0.9;
+    }
+
+    .hero-desc {
+      font-size: 1rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.9;
+      margin-bottom: 32px;
+      max-width: 500px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    /* ===== الأزرار ===== */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 28px;
+      border-radius: 12px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .btn-primary {
+      background: var(--secondary);
+      color: var(--primary-dark);
+    }
+
+    .btn-primary:hover {
+      background: var(--secondary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(201,162,39,0.3);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: white;
+      border: 1.5px solid rgba(255,255,255,0.3);
+    }
+
+    .btn-outline:hover {
+      border-color: var(--secondary);
+      color: var(--secondary);
+      transform: translateY(-2px);
+    }
+
+    .btn-dark {
+      background: var(--primary);
+      color: white;
+    }
+
+    .btn-dark:hover {
+      background: var(--primary-light);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(11,61,46,0.3);
+    }
+
+    /* تأثير Ripple */
+    .ripple-span {
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.3);
+      transform: scale(0);
+      animation: rippleAnim 0.6s ease-out;
+      pointer-events: none;
+    }
+
+    @keyframes rippleAnim {
+      to { transform: scale(4); opacity: 0; }
+    }
+
+    /* ==========================================================
+       7. قسم العدادات (Counters)
+       ========================================================== */
+    .counters-section {
+      background: var(--bg-alt);
+      border-top: 1px solid var(--card-border);
+      border-bottom: 1px solid var(--card-border);
+      padding: 40px 24px;
+      transition: background-color 0.4s ease;
+    }
+
+    .counters-grid {
+      max-width: 900px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-around;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .counter-item {
+      text-align: center;
+    }
+
+    .counter-number {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+
+    [data-theme="dark"] .counter-number {
+      color: var(--secondary);
+    }
+
+    .counter-label {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      font-weight: 500;
+    }
+
+    /* ==========================================================
+       8. الأقسام المشتركة
+       ========================================================== */
+    .section {
+      padding: 90px 24px;
+      transition: background-color 0.4s ease;
+    }
+
+    .section-alt {
+      background: var(--bg-alt);
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin-bottom: 16px;
+    }
+
+    [data-theme="dark"] .section-title {
+      color: var(--secondary);
+    }
+
+    /* فاصل إسلامي زخرفي */
+    .islamic-divider {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 10px;
+    }
+
+    .islamic-divider::before,
+    .islamic-divider::after {
+      content: '';
+      width: 80px;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--secondary), transparent);
+    }
+
+    .islamic-divider .diamond {
+      width: 10px;
+      height: 10px;
+      background: var(--secondary);
+      transform: rotate(45deg);
+      flex-shrink: 0;
+    }
+
+    /* ==========================================================
+       9. قسم نبذة تعريفية
+       ========================================================== */
+    .about-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 48px;
+      box-shadow: 0 8px 40px var(--shadow-color);
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .about-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 120px;
+      height: 120px;
+      background: radial-gradient(circle at top right, rgba(201,162,39,0.08), transparent 70%);
+      pointer-events: none;
+    }
+
+    .about-card p {
+      font-size: 1.08rem;
+      line-height: 2.1;
+      color: var(--text);
+      text-align: justify;
+    }
+
+    /* ==========================================================
+       10. قسم المؤهلات العلمية
+       ========================================================== */
+    .qual-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+
+    .qual-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px 28px;
+      display: flex;
+      align-items: flex-start;
+      gap: 18px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .qual-card::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: 0;
+      width: 4px;
+      height: 0;
+      background: var(--secondary);
+      border-radius: 0 4px 4px 0;
+      transition: height 0.4s ease;
+    }
+
+    .qual-card:hover::after {
+      height: 100%;
+    }
+
+    .qual-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 35px var(--shadow-color);
+    }
+
+    .qual-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--secondary);
+    }
+
+    [data-theme="dark"] .qual-icon {
+      background: linear-gradient(135deg, rgba(201,162,39,0.15), rgba(201,162,39,0.05));
+    }
+
+    .qual-icon svg {
+      width: 26px;
+      height: 26px;
+    }
+
+    .qual-text {
+      font-size: 1.02rem;
+      font-weight: 600;
+      color: var(--text);
+      line-height: 1.7;
+      padding-top: 4px;
+    }
+
+    .qual-text small {
+      display: block;
+      font-weight: 400;
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ==========================================================
+       11. قسم الخبرات (Timeline)
+       ========================================================== */
+    .timeline {
+      position: relative;
+      padding-right: 40px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      background: linear-gradient(to bottom, var(--secondary), var(--primary), var(--secondary));
+      border-radius: 3px;
+    }
+
+    .timeline-item {
+      position: relative;
+      padding-bottom: 36px;
+      padding-right: 36px;
+    }
+
+    .timeline-item:last-child {
+      padding-bottom: 0;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      right: -46px;
+      top: 6px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--secondary);
+      border: 3px solid var(--bg);
+      box-shadow: 0 0 0 3px var(--secondary);
+      transition: var(--transition);
+      z-index: 1;
+    }
+
+    .timeline-item:hover .timeline-dot {
+      transform: scale(1.3);
+      box-shadow: 0 0 0 3px var(--secondary), 0 0 15px rgba(201,162,39,0.3);
+    }
+
+    .timeline-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transition: var(--transition);
+    }
+
+    .timeline-card:hover {
+      transform: translateX(-4px);
+      box-shadow: 0 8px 30px var(--shadow-color);
+    }
+
+    .timeline-card h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 6px;
+    }
+
+    [data-theme="dark"] .timeline-card h3 {
+      color: var(--secondary);
+    }
+
+    .timeline-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.8;
+    }
+
+    /* ==========================================================
+       12. قسم الرسالة
+       ========================================================== */
+    .mission-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 52px 48px;
+      box-shadow: 0 8px 40px var(--shadow-color);
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: var(--transition);
+    }
+
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at center, rgba(201,162,39,0.04), transparent 70%);
+      pointer-events: none;
+    }
+
+    .mission-card p {
+      font-size: 1.1rem;
+      line-height: 2.2;
+      color: var(--text);
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    /* ==========================================================
+       13. قسم القيم
+       ========================================================== */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+
+    .value-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 32px 20px;
+      text-align: center;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .value-card::before {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--secondary);
+      transform: scaleX(0);
+      transition: transform 0.4s ease;
+    }
+
+    .value-card:hover::before {
+      transform: scaleX(1);
+    }
+
+    .value-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 12px 35px var(--shadow-color);
+    }
+
+    .value-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, rgba(201,162,39,0.12), rgba(201,162,39,0.04));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 16px;
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+
+    .value-card:hover .value-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--secondary);
+      transform: scale(1.1);
+    }
+
+    .value-icon svg {
+      width: 28px;
+      height: 28px;
+    }
+
+    .value-card h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .value-card p {
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+      line-height: 1.7;
+    }
+
+    /* ==========================================================
+       14. قسم المعلومات الشخصية
+       ========================================================== */
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 20px;
+    }
+
+    .info-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius-sm);
+      padding: 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transition: var(--transition);
+    }
+
+    .info-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px var(--shadow-color);
+      border-color: var(--secondary);
+    }
+
+    .info-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(11,61,46,0.08), rgba(201,162,39,0.06));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      color: var(--primary);
+      transition: var(--transition);
+    }
+
+    [data-theme="dark"] .info-icon {
+      background: linear-gradient(135deg, rgba(201,162,39,0.12), rgba(201,162,39,0.04));
+      color: var(--secondary);
+    }
+
+    .info-card:hover .info-icon {
+      background: linear-gradient(135deg, var(--primary), var(--primary-light));
+      color: var(--secondary);
+    }
+
+    .info-icon svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    .info-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .info-value {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+    }
+
+    /* ==========================================================
+       15. قسم التواصل
+       ========================================================== */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .contact-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--glass-blur);
+      -webkit-backdrop-filter: var(--glass-blur);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 4px 20px var(--shadow-color);
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 40px var(--shadow-color);
+    }
+
+    .contact-icon {
+      width: 70px;
+      height: 70px;
+      border-radius: 20px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+      transition: var(--transition);
+    }
+
+    .contact-icon svg {
+      width: 36px;
+      height: 36px;
+      color: white;
+    }
+
+    .contact-icon.fb {
+      background: linear-gradient(135deg, #1877F2, #0d5bbd);
+    }
+
+    .contact-icon.msg {
+      background: linear-gradient(135deg, #00B2FF, #0084cc);
+    }
+
+    .contact-icon.gmail {
+      background: linear-gradient(135deg, #EA4335, #c5221f);
+    }
+
+    .contact-card h3 {
+      font-size: 1.2rem;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .contact-card .contact-desc {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      margin-bottom: 20px;
+      line-height: 1.7;
+    }
+
+    .contact-emails {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 20px;
+    }
+
+    .email-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 8px 14px;
+      background: rgba(11,61,46,0.04);
+      border: 1px solid var(--card-border);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--text);
+      direction: ltr;
+      transition: var(--transition);
+    }
+
+    [data-theme="dark"] .email-item {
+      background: rgba(201,162,39,0.04);
+    }
+
+    .email-item:hover {
+      border-color: var(--secondary);
+    }
+
+    .copy-btn {
+      width: 30px;
+      height: 30px;
+      border-radius: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text-muted);
+      transition: var(--transition);
+      flex-shrink: 0;
+    }
+
+    .copy-btn:hover {
+      color: var(--secondary);
+      background: rgba(201,162,39,0.1);
+    }
+
+    .copy-btn svg {
+      width: 16px;
+      height: 16px;
+    }
+
+    .copy-btn.copied {
+      color: #22c55e;
+    }
+
+    .contact-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 24px;
+      border-radius: 10px;
+      font-size: 0.92rem;
+      font-weight: 600;
+      transition: var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .contact-btn svg {
+      width: 18px;
+      height: 18px;
+    }
+
+    .contact-btn.fb-btn {
+      background: #1877F2;
+      color: white;
+    }
+
+    .contact-btn.fb-btn:hover {
+      background: #1565d8;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(24,119,242,0.3);
+    }
+
+    .contact-btn.msg-btn {
+      background: #00B2FF;
+      color: white;
+    }
+
+    .contact-btn.msg-btn:hover {
+      background: #009ee0;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,178,255,0.3);
+    }
+
+    /* ==========================================================
+       16. Footer
+       ========================================================== */
+    .footer {
+      background: var(--dark);
+      color: rgba(255,255,255,0.8);
+      padding: 50px 24px 30px;
+      text-align: center;
+    }
+
+    .footer-name {
+      font-size: 1.5rem;
+      font-weight: 800;
+      color: white;
+      margin-bottom: 6px;
+    }
+
+    .footer-title {
+      font-size: 0.95rem;
+      color: var(--secondary);
+      font-weight: 500;
+      margin-bottom: 24px;
+    }
+
+    .footer-divider {
+      width: 60px;
+      height: 2px;
+      background: var(--secondary);
+      margin: 0 auto 24px;
+      border-radius: 2px;
+    }
+
+    .footer-copy {
+      font-size: 0.85rem;
+      color: rgba(255,255,255,0.5);
+    }
+
+    .footer-copy span {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    /* ==========================================================
+       17. زر العودة للأعلى
+       ========================================================== */
+    #back-to-top {
+      position: fixed;
+      bottom: 30px;
+      left: 30px;
+      width: 48px;
+      height: 48px;
+      border-radius: 14px;
+      background: var(--primary);
+      color: var(--secondary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+      z-index: 900;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(20px);
+      transition: var(--transition);
+    }
+
+    #back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #back-to-top:hover {
+      background: var(--primary-light);
+      transform: translateY(-3px);
+      box-shadow: 0 8px 30px rgba(11,61,46,0.3);
+    }
+
+    #back-to-top svg {
+      width: 22px;
+      height: 22px;
+    }
+
+    /* ==========================================================
+       18. الحركات والأنيميشن
+       ========================================================== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.revealed {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-right {
+      opacity: 0;
+      transform: translateX(40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-right.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-left {
+      opacity: 0;
+      transform: translateX(-40px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-left.revealed {
+      opacity: 1;
+      transform: translateX(0);
+    }
+
+    .reveal-scale {
+      opacity: 0;
+      transform: scale(0.9);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal-scale.revealed {
+      opacity: 1;
+      transform: scale(1);
+    }
+
+    /* تأخير الحركات */
+    .delay-1 { transition-delay: 0.1s; }
+    .delay-2 { transition-delay: 0.2s; }
+    .delay-3 { transition-delay: 0.3s; }
+    .delay-4 { transition-delay: 0.4s; }
+    .delay-5 { transition-delay: 0.5s; }
+    .delay-6 { transition-delay: 0.6s; }
+
+    /* ==========================================================
+       19. التصميم المتجاوب (Responsive)
+       ========================================================== */
+    @media (max-width: 1024px) {
+      .hero-name {
+        font-size: 2.2rem;
+      }
+      .hero-image-frame img {
+        width: 260px;
+        height: 320px;
+      }
+      .section-title {
+        font-size: 1.9rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .nav-links {
+        display: none;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+
+      .hero {
+        padding: 100px 20px 50px;
+        min-height: auto;
+        padding-bottom: 60px;
+      }
+
+      .hero-content {
+        flex-direction: column-reverse;
+        text-align: center;
+        gap: 40px;
+      }
+
+      .hero-image-frame img {
+        width: 220px;
+        height: 270px;
+      }
+
+      .hero-name {
+        font-size: 1.9rem;
+      }
+
+      .hero-title {
+        font-size: 1rem;
+      }
+
+      .hero-desc {
+        margin: 0 auto 28px;
+        font-size: 0.95rem;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .hero-glow {
+        width: 500px;
+        height: 300px;
+      }
+
+      .section {
+        padding: 60px 20px;
+      }
+
+      .section-title {
+        font-size: 1.7rem;
+      }
+
+      .about-card {
+        padding: 28px 22px;
+      }
+
+      .about-card p {
+        text-align: center;
+        font-size: 0.98rem;
+      }
+
+      .qual-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .timeline {
+        padding-right: 30px;
+      }
+
+      .timeline::before {
+        right: 0;
+      }
+
+      .timeline-dot {
+        right: -36px;
+        width: 13px;
+        height: 13px;
+      }
+
+      .timeline-item {
+        padding-right: 30px;
+      }
+
+      .mission-card {
+        padding: 32px 22px;
+      }
+
+      .mission-card p {
+        font-size: 1rem;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+        gap: 14px;
+      }
+
+      .value-card {
+        padding: 24px 14px;
+      }
+
+      .info-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .counter-number {
+        font-size: 2rem;
+      }
+
+      .islamic-divider::before,
+      .islamic-divider::after {
+        width: 50px;
+      }
+
+      #back-to-top {
+        bottom: 20px;
+        left: 20px;
+        width: 42px;
+        height: 42px;
+      }
+
+      #cursor-glow {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-name {
+        font-size: 1.6rem;
+      }
+
+      .hero-image-frame img {
+        width: 180px;
+        height: 220px;
+      }
+
+      .hero-image-frame {
+        padding: 5px;
+        border-radius: 18px;
+      }
+
+      .hero-image-frame img {
+        border-radius: 14px;
+      }
+
+      .btn {
+        padding: 10px 22px;
+        font-size: 0.88rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .values-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .email-item {
+        font-size: 0.78rem;
+        padding: 6px 10px;
+      }
+    }
+
+    /* ===== دعم تقليل الحركة ===== */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+      }
+      .reveal, .reveal-right, .reveal-left, .reveal-scale {
+        opacity: 1;
+        transform: none;
+      }
+    }
+
+    /* ===== التنقل بلوحة المفاتيح ===== */
+    *:focus-visible {
+      outline: 2px solid var(--secondary);
+      outline-offset: 3px;
+      border-radius: 4px;
+    }
+
+    /* ===== تحسين الطباعة ===== */
+    ::selection {
+      background: var(--secondary);
+      color: var(--primary-dark);
+    }
+
+    /* إخفاء شريط التمرير مؤقتًا أثناء التحميل */
+    body.loading {
+      overflow: hidden;
+    }
+  </style>
+</head>
+<body class="loading">
+
+  <!-- ===== شاشة التحميل ===== -->
+  <div id="loading-screen" role="status" aria-label="جارٍ تحميل الموقع">
+    <div class="loader-star" aria-hidden="true"></div>
+    <div class="loader-text">بسم الله الرحمن الرحيم</div>
+  </div>
+
+  <!-- ===== شريط التقدم ===== -->
+  <div id="progress-bar" aria-hidden="true"></div>
+
+  <!-- ===== تأثير المؤشر ===== -->
+  <div id="cursor-glow" aria-hidden="true"></div>
+
+  <!-- ===== شريط التنقل ===== -->
+  <nav class="navbar" role="navigation" aria-label="القائمة الرئيسية">
+    <div class="navbar-inner">
+      <a href="#hero" class="nav-brand" aria-label="الصفحة الرئيسية">
+        <span>الشيخ</span> محمود سليم
+      </a>
+
+      <div class="nav-links" role="menubar">
+        <a href="#hero" role="menuitem" class="active">الرئيسية</a>
+        <a href="#about" role="menuitem">نبذة</a>
+        <a href="#qualifications" role="menuitem">المؤهلات</a>
+        <a href="#experience" role="menuitem">الخبرات</a>
+        <a href="#personal-info" role="menuitem">المعلومات الشخصية</a>
+        <a href="#contact" role="menuitem">التواصل</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- زر التبديل بين الوضعين -->
+        <button class="theme-toggle" id="theme-toggle" aria-label="تبديل الوضع الداكن">
+          <!-- أيقونة الشمس (تظهر في الوضع الداكن) -->
+          <svg id="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+            <circle cx="12" cy="12" r="5"></circle>
+            <line x1="12" y1="1" x2="12" y2="3"></line>
+            <line x1="12" y1="21" x2="12" y2="23"></line>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+            <line x1="1" y1="12" x2="3" y2="12"></line>
+            <line x1="21" y1="12" x2="23" y2="12"></line>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+          </svg>
+          <!-- أيقونة القمر (تظهر في الوضع الفاتح) -->
+          <svg id="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+          </svg>
+        </button>
+
+        <!-- زر القائمة للموبايل -->
+        <button class="menu-toggle" id="menu-toggle" aria-label="فتح القائمة" aria-expanded="false">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ===== القائمة الكاملة للموبايل ===== -->
+  <div class="mobile-menu" id="mobile-menu" role="dialog" aria-label="قائمة التنقل">
+    <button class="mobile-close" id="mobile-close" aria-label="إغلاق القائمة">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+        <line x1="18" y1="6" x2="6" y2="18"></line>
+        <line x1="6" y1="6" x2="18" y2="18"></line>
+      </svg>
+    </button>
+    <a href="#hero" class="active" role="menuitem">الرئيسية</a>
+    <a href="#about" role="menuitem">نبذة</a>
+    <a href="#qualifications" role="menuitem">المؤهلات</a>
+    <a href="#experience" role="menuitem">الخبرات</a>
+    <a href="#personal-info" role="menuitem">المعلومات الشخصية</a>
+    <a href="#contact" role="menuitem">التواصل</a>
+  </div>
+
+  <!-- ===== القسم الرئيسي (Hero) ===== -->
+  <section class="hero" id="hero" aria-label="القسم الرئيسي">
+    <div class="hero-pattern" aria-hidden="true"></div>
+    <div class="hero-glow" aria-hidden="true"></div>
+
+    <div class="hero-content">
+      <!-- صورة الشيخ (تظهر على اليمين في RTL) -->
+      <div class="hero-image reveal-right">
+        <div class="hero-image-frame">
+          <img
+            src="https://scontent.fcai19-8.fna.fbcdn.net/v/t1.6435-9/80093879_2154777924831197_4971371000978472960_n.jpg?stp=dst-jpg_tt6&cstp=mx960x720&ctp=s960x720&_nc_cat=105&ccb=1-7&_nc_sid=833d8c&_nc_ohc=oHBt690tyr4Q7kNvwH2hKwB&_nc_oc=Adqlyss85zGl_dZwNLzUd_lJsEaxYO6gvc_P8A_K5L6EupqF_vUrQ1DNOEEl1tR8bIo&_nc_zt=23&_nc_ht=scontent.fcai19-8.fna&_nc_gid=kNAjqZB49YbHnE9lmeHhPw&_nc_ss=7b2a8&oh=00_AQBMK-DOnCuexb68DPThs-bwq2T0WhVMlwiSn-PVFUzEAg&oe=6A8B5179"
+            alt="صورة الشيخ محمود إبراهيم سليم"
+            width="320"
+            height="380"
+          >
+          <div class="hero-image-decor" aria-hidden="true"></div>
+        </div>
+      </div>
+
+      <!-- النصوص (تظهر على اليسار في RTL) -->
+      <div class="hero-text reveal-left">
+        <p class="hero-bismillah">بسم الله الرحمن الرحيم</p>
+        <p class="hero-greeting">السلام عليكم ورحمة الله وبركاته</p>
+        <h1 class="hero-name">الشيخ محمود إبراهيم سليم</h1>
+        <p class="hero-title">الإمام والخطيب ومدرس القرآن الكريم والعلوم الشرعية</p>
+        <p class="hero-desc">
+          عالمٌ متواضع يسعى لنشر نور القرآن الكريم وعلوم الشريعة الإسلامية،
+          ملتزمٌ بمنهج الوسطية والاعتدال، ويسعى لخدمة المجتمع بالعلم والحكمة والموعظة الحسنة.
+        </p>
+        <div class="hero-buttons">
+          <a href="#about" class="btn btn-primary ripple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+            نبذة عنه
+          </a>
+          <a href="#contact" class="btn btn-outline ripple">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+            تواصل معنا
+          </a>
+          <a href="#" class="btn btn-outline ripple" id="download-cv-btn" aria-label="تحميل السيرة الذاتية">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+            تحميل السيرة
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم العدادات ===== -->
+  <div class="counters-section" aria-label="إحصائيات">
+    <div class="counters-grid">
+      <div class="counter-item reveal delay-1">
+        <div class="counter-number" data-target="5" data-suffix="+">0</div>
+        <div class="counter-label">سنوات الخبرة</div>
+      </div>
+      <div class="counter-item reveal delay-2">
+        <div class="counter-number" data-target="5" data-suffix="">0</div>
+        <div class="counter-label">المؤهلات العلمية</div>
+      </div>
+      <div class="counter-item reveal delay-3">
+        <div class="counter-number" data-target="6" data-suffix="">0</div>
+        <div class="counter-label">القيم الأساسية</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== قسم نبذة تعريفية ===== -->
+  <section class="section" id="about" aria-label="نبذة تعريفية">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">من نحن</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="about-card reveal-scale">
+        <p>
+          الشيخ محمود إبراهيم سليم، إمامٌ وخطيبٌ ومدرسٌ للقرآن الكريم والعلوم الشرعية،
+          نشأ في بيئةٍ علميةٍ صالحة، وتتلمذ على يدِ كبارِ العلماء، وتميّز في حفظِ كتابِ اللهِ تعالى
+          وتجويدهِ وإتقانِ علومِه. حاصلٌ على أعلى الشهاداتِ الأكاديميةِ في الدراساتِ الإسلامية،
+          يجمعُ بينَ العلمِ الشرعيِ الرصينِ والمنهجِ الوسطيِ المعتدلِ الذي ينأى عن الغلوِ والتفريط.
+          يعملُ على نشرِ الوسطيةِ والاعتدالِ وترسيخِ قيمِ الإسلامِ السمحةِ من خلالِ خطبهِ
+          ودروسهِ ومحاضراتهِ التي تلقى إقبالًا واسعًا، يسعى دائمًا لخدمةِ المجتمعِ
+          والدعوةِ إلى اللهِ بالحكمةِ والموعظةِ الحسنةِ، مؤمنًا بأنَّ العلمَ النافعَ
+          هو أساسُ الإصلاحِ في الأرض.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم المؤهلات العلمية ===== -->
+  <section class="section section-alt" id="qualifications" aria-label="المؤهلات العلمية">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">المؤهلات العلمية</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="qual-grid">
+        <!-- المؤهل 1 -->
+        <div class="qual-card reveal delay-1">
+          <div class="qual-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <div class="qual-text">
+            حاصل على بكالوريوس في الدراسات الإسلامية
+            <small>المرحلة الجامعية الأولى</small>
+          </div>
+        </div>
+
+        <!-- المؤهل 2 -->
+        <div class="qual-card reveal delay-2">
+          <div class="qual-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path></svg>
+          </div>
+          <div class="qual-text">
+            حاصل على ليسانس في أصول الدين
+            <small>تخصصٌ أصيل في أصول الفقه والعقيدة</small>
+          </div>
+        </div>
+
+        <!-- المؤهل 3 -->
+        <div class="qual-card reveal delay-3">
+          <div class="qual-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+          </div>
+          <div class="qual-text">
+            حاصل على دبلوم الدراسات العليا
+            <small>تمهيدٌ للمرحلةِ العلميةِ المتقدمة</small>
+          </div>
+        </div>
+
+        <!-- المؤهل 4 -->
+        <div class="qual-card reveal delay-4">
+          <div class="qual-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"></path><path d="M6 12v5c3 3 9 3 12 0v-5"></path></svg>
+          </div>
+          <div class="qual-text">
+            حاصل على درجة الماجستير في العلوم الشرعية
+            <small>تعمّقٌ في البحثِ العلميِ الشرعي</small>
+          </div>
+        </div>
+
+        <!-- المؤهل 5 -->
+        <div class="qual-card reveal delay-5">
+          <div class="qual-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          </div>
+          <div class="qual-text">
+            حاصل على درجة الدكتوراه في الدراسات الإسلامية
+            <small>القمةُ العلميةُ والأكاديمية</small>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم الخبرات ===== -->
+  <section class="section" id="experience" aria-label="الخبرات">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">الخبرات</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="timeline">
+        <!-- الخبرة 1 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>إمام وخطيب</h3>
+            <p>إمامةُ المصلّين وإدارة شؤونِ المسجدِ وإلقاءِ الخطبِ الجُمَعيةِ والمناسباتِ الدينيةِ بأسلوبٍ مؤثرٍ يجمعُ بينَ الأصالةِ والمعاصرة.</p>
+          </div>
+        </div>
+
+        <!-- الخبرة 2 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>مدرس قرآن كريم</h3>
+            <p>تعليمُ القرآنِ الكريمِ برواياتهِ المختلفةِ معَ التركيزِ على الإتقانِ والتجويدِ وتخريجِ أجيالٍ من حُفّاظِ كتابِ الله.</p>
+          </div>
+        </div>
+
+        <!-- الخبرة 3 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>محفظ للقرآن الكريم</h3>
+            <p>حفظُ القرآنِ الكريمِ كاملًا بروايةِ حفصٍ عن عاصمٍ معَ إجازةٍ في القراءاتِ ومراجعةٍ مستمرةٍ لضمانِ الثباتِ والاتقان.</p>
+          </div>
+        </div>
+
+        <!-- الخبرة 4 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>مدرس علوم شرعية</h3>
+            <p>تدريسُ العلومِ الشرعيةِ من فقهٍ وأصولٍ وتفسيرٍ وحديثٍ وعقيدةٍ بمنهجٍ علميٍّ رصينٍ يربطُ الطالبَ بمصادرِ الشريعةِ الأصيلة.</p>
+          </div>
+        </div>
+
+        <!-- الخبرة 5 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>محاضر في الندوات الإسلامية</h3>
+            <p>المشاركةُ في الندواتِ والمؤتمراتِ الإسلاميةِ لتقديمِ رؤىً شرعيةٍ معاصرةٍ في قضايا الفكرِ والثقافةِ والمجتمع.</p>
+          </div>
+        </div>
+
+        <!-- الخبرة 6 -->
+        <div class="timeline-item reveal">
+          <div class="timeline-dot" aria-hidden="true"></div>
+          <div class="timeline-card">
+            <h3>المشاركة في الأنشطة الدعوية</h3>
+            <p>المشاركةُ الفعّالةُ في الأنشطةِ الدعويةِ والميدانيةِ من دروسٍ ومحاضراتٍ ومسابقاتِ قرآنيةٍ وبرامجِ توعويةٍ متنوعة.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم الرسالة ===== -->
+  <section class="section section-alt" id="mission" aria-label="رسالتنا">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">رسالتنا</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="mission-card reveal-scale">
+        <p>
+          رسالتنا هي نشرُ كتابِ اللهِ تعالى وتعليمُهُ وتجويدهُ بينَ الناسِ كافّة،
+          وترسيخُ سنّةِ النبيّ ﷺ في قلوبِ المسلمينَ وعقولهم، وبناءُ جيلٍ واعٍ متسلّحٍ بالعلمِ والإيمانِ
+          يسهمُ في نهضةِ أمّته. نسعى لترسيخِ الأخلاقِ الحميدةِ وقيمِ التسامحِ والوسطيةِ
+          والاعتدالِ بعيدًا عن الغلوِ والشطط، وخدمةِ المجتمعِ من خلالِ تقديمِ العلمِ النافعِ
+          والموعظةِ الحسنةِ التي تصلحُ القلوبَ وتُصلحُ الحالَ، وتبنيُ جسورَ التواصلِ بينَ
+          العلمِ الشرعيِّ وحياةِ الناسِ اليومية.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم القيم ===== -->
+  <section class="section" id="values" aria-label="القيم الأساسية">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">قيمنا الأساسية</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="values-grid">
+        <!-- الإخلاص -->
+        <div class="value-card reveal delay-1">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <h3>الإخلاص</h3>
+          <p>إخلاصُ العملِ للهِ تعالى في كلِّ قولٍ وعملٍ ودعوةٍ</p>
+        </div>
+
+        <!-- الأمانة -->
+        <div class="value-card reveal delay-2">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+          </div>
+          <h3>الأمانة</h3>
+          <p>الحفاظُ على الأمانةِ في العلمِ والتعليمِ والدعوةِ</p>
+        </div>
+
+        <!-- العلم -->
+        <div class="value-card reveal delay-3">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+          </div>
+          <h3>العلم</h3>
+          <p>التقديرُ الأسمى للعلمِ الشرعيِّ والسعيُ الدائمُ لطلبِه</p>
+        </div>
+
+        <!-- الرحمة -->
+        <div class="value-card reveal delay-4">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+          </div>
+          <h3>الرحمة</h3>
+          <p>التعاملُ بالرحمةِ واللينِ مع الجميعِ اقتداءً بالنبيّ ﷺ</p>
+        </div>
+
+        <!-- الاعتدال -->
+        <div class="value-card reveal delay-5">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="2" x2="12" y2="22"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+          </div>
+          <h3>الاعتدال</h3>
+          <p>التمسكُ بمنهجِ الوسطيةِ بعيدًا عن الغلوِ والتفريط</p>
+        </div>
+
+        <!-- خدمة المجتمع -->
+        <div class="value-card reveal delay-6">
+          <div class="value-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+          </div>
+          <h3>خدمة المجتمع</h3>
+          <p>السعيُ الدائمُ لخدمةِ المجتمعِ ونفعِ الناسِ</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم المعلومات الشخصية ===== -->
+  <section class="section section-alt" id="personal-info" aria-label="المعلومات الشخصية">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">المعلومات الشخصية</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="info-grid">
+        <!-- يعيش في -->
+        <div class="info-card reveal delay-1">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+          </div>
+          <div>
+            <div class="info-label">يعيش في</div>
+            <div class="info-value">دسوق</div>
+          </div>
+        </div>
+
+        <!-- من -->
+        <div class="info-card reveal delay-2">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          </div>
+          <div>
+            <div class="info-label">من</div>
+            <div class="info-value">دسوق</div>
+          </div>
+        </div>
+
+        <!-- تاريخ الميلاد -->
+        <div class="info-card reveal delay-3">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          </div>
+          <div>
+            <div class="info-label">تاريخ الميلاد</div>
+            <div class="info-value">11 أكتوبر 1991</div>
+          </div>
+        </div>
+
+        <!-- الحالة الاجتماعية -->
+        <div class="info-card reveal delay-4">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path></svg>
+          </div>
+          <div>
+            <div class="info-label">الحالة الاجتماعية</div>
+            <div class="info-value">متزوج منذ 27 يونيو 2018</div>
+          </div>
+        </div>
+
+        <!-- الجنس -->
+        <div class="info-card reveal delay-5">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+          </div>
+          <div>
+            <div class="info-label">الجنس</div>
+            <div class="info-value">ذكر</div>
+          </div>
+        </div>
+
+        <!-- العمل -->
+        <div class="info-card reveal delay-6">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+          </div>
+          <div>
+            <div class="info-label">العمل</div>
+            <div class="info-value">إمام وخطيب ومدرس بوزارة الأوقاف المصرية</div>
+          </div>
+        </div>
+
+        <!-- مدة الخبرة -->
+        <div class="info-card reveal" style="grid-column: 1 / -1; max-width: 500px; margin: 0 auto; width: 100%;">
+          <div class="info-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+          </div>
+          <div>
+            <div class="info-label">مدة الخبرة</div>
+            <div class="info-value">منذ 22 أغسطس 2019 وحتى الآن</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== قسم التواصل ===== -->
+  <section class="section" id="contact" aria-label="تواصل معنا">
+    <div class="container">
+      <div class="section-header reveal">
+        <h2 class="section-title">تواصل معنا</h2>
+        <div class="islamic-divider" aria-hidden="true"><div class="diamond"></div></div>
+      </div>
+
+      <div class="contact-grid">
+        <!-- Facebook -->
+        <div class="contact-card reveal delay-1">
+          <div class="contact-icon fb" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M22 12c0-5.52-4.48-10-10-10S2 6.48 2 12c0 4.84 3.44 8.87 8 9.8V15H8v-3h2V9.5C10 7.57 11.57 6 13.5 6H16v3h-2c-.55 0-1 .45-1 1v2h3v3h-3v6.95c5.05-.5 9-4.76 9-9.95z"/></svg>
+          </div>
+          <h3>Facebook</h3>
+          <p class="contact-desc">تابع الصفحة الرسمية على فيسبوك للتواصل ومتابعة آخر الأخبار والمنشورات.</p>
+          <a href="https://www.facebook.com/mhmwd.slym.592778?locale=ar_AR" target="_blank" rel="noopener noreferrer" class="contact-btn fb-btn ripple" aria-label="زيارة صفحة فيسبوك">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+            زيارة الصفحة
+          </a>
+        </div>
+
+        <!-- Messenger -->
+        <div class="contact-card reveal delay-2">
+          <div class="contact-icon msg" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.04 2 11c0 2.93 1.56 5.54 4 7.22V22l3.45-1.89c.83.22 1.7.34 2.6.34 5.52 0 10-4.04 10-9S17.52 2 12 2zm5.98 7.47l-2.86 4.53c-.37.59-1.15.76-1.72.36l-2.43-1.83c-.26-.19-.62-.19-.88 0l-3.27 2.49c-.45.34-1.03-.22-.73-.69l2.86-4.53c.37-.59 1.15-.76 1.72-.36l2.43 1.83c.26.19.62.19.88 0l3.27-2.49c.45-.34 1.03.22.73.69z"/></svg>
+          </div>
+          <h3>Messenger</h3>
+          <p class="contact-desc">راسلنا مباشرة عبر ماسنجر للحصول على رد سريع وملائم.</p>
+          <a href="https://www.messenger.com/e2ee/t/1006249105525814#" target="_blank" rel="noopener noreferrer" class="contact-btn msg-btn ripple" aria-label="راسل عبر ماسنجر">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+            راسل الآن
+          </a>
+        </div>
+
+        <!-- Gmail -->
+        <div class="contact-card reveal delay-3">
+          <div class="contact-icon gmail" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          </div>
+          <h3>Gmail</h3>
+          <p class="contact-desc">تواصل عبر البريد الإلكتروني للمراسلات الرسمية والاستفسارات.</p>
+          <div class="contact-emails">
+            <div class="email-item">
+              <a href="mailto:slymn66389@gmail.com" aria-label="إرسال بريد إلى slymn66389@gmail.com">slymn66389@gmail.com</a>
+              <button class="copy-btn" data-email="slymn66389@gmail.com" aria-label="نسخ البريد الإلكتروني">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+            <div class="email-item">
+              <a href="mailto:mahmudselem3039@gmail.com" aria-label="إرسال بريد إلى mahmudselem3039@gmail.com">mahmudselem3039@gmail.com</a>
+              <button class="copy-btn" data-email="mahmudselem3039@gmail.com" aria-label="نسخ البريد الإلكتروني">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== Footer ===== -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer-name">الشيخ محمود إبراهيم سليم</div>
+    <div class="footer-title">الإمام والخطيب ومدرس القرآن الكريم</div>
+    <div class="footer-divider" aria-hidden="true"></div>
+    <div class="footer-copy">
+      جميع الحقوق محفوظة &copy; <span id="footer-year"></span> الشيخ محمود إبراهيم سليم
+    </div>
+  </footer>
+
+  <!-- ===== زر العودة للأعلى ===== -->
+  <button id="back-to-top" aria-label="العودة إلى أعلى الصفحة">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"></polyline></svg>
+  </button>
+
+  <!-- ===== JavaScript ===== -->
+  <script>
+    /* ==========================================================
+       1. عناصر DOM
+       ========================================================== */
+    const loadingScreen = document.getElementById('loading-screen');
+    const progressBar = document.getElementById('progress-bar');
+    const cursorGlow = document.getElementById('cursor-glow');
+    const navbar = document.querySelector('.navbar');
+    const themeToggle = document.getElementById('theme-toggle');
+    const iconSun = document.getElementById('icon-sun');
+    const iconMoon = document.getElementById('icon-moon');
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+    const mobileClose = document.getElementById('mobile-close');
+    const backToTop = document.getElementById('back-to-top');
+    const footerYear = document.getElementById('footer-year');
+    const navLinks = document.querySelectorAll('.nav-links a, .mobile-menu a');
+    const sections = document.querySelectorAll('section[id], .hero[id]');
+    const copyBtns = document.querySelectorAll('.copy-btn');
+    const downloadCvBtn = document.getElementById('download-cv-btn');
+
+    /* ==========================================================
+       2. شاشة التحميل
+       ========================================================== */
+    window.addEventListener('load', function() {
+      setTimeout(function() {
+        loadingScreen.classList.add('hidden');
+        document.body.classList.remove('loading');
+      }, 1200);
+    });
+
+    /* ==========================================================
+       3. شريط التقدم (قراءة الصفحة)
+       ========================================================== */
+    function updateProgressBar() {
+      var scrollTop = window.scrollY;
+      var docHeight = document.documentElement.scrollHeight - window.innerHeight;
+      var scrollPercent = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+      progressBar.style.width = scrollPercent + '%';
+    }
+
+    /* ==========================================================
+       4. شريط التنقل - تأثير التمرير
+       ========================================================== */
+    function handleNavScroll() {
+      if (window.scrollY > 50) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    }
+
+    /* ==========================================================
+       5. التبديل بين الوضع الفاتح والداكن
+       ========================================================== */
+    function getPreferredTheme() {
+      var stored = localStorage.getItem('theme');
+      if (stored) return stored;
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    }
+
+    function applyTheme(theme) {
+      document.documentElement.setAttribute('data-theme', theme);
+      if (theme === 'dark') {
+        iconSun.style.display = 'block';
+        iconMoon.style.display = 'none';
+      } else {
+        iconSun.style.display = 'none';
+        iconMoon.style.display = 'block';
+      }
+      localStorage.setItem('theme', theme);
+    }
+
+    /* تطبيق الثيم عند التحميل */
+    applyTheme(getPreferredTheme());
+
+    themeToggle.addEventListener('click', function() {
+      var current = document.documentElement.getAttribute('data-theme');
+      var next = current === 'dark' ? 'light' : 'dark';
+      applyTheme(next);
+    });
+
+    /* الاستماع لتغيير تفضيل النظام */
+    window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', function(e) {
+      if (!localStorage.getItem('theme')) {
+        applyTheme(e.matches ? 'dark' : 'light');
+      }
+    });
+
+    /* ==========================================================
+       6. القائمة المتنقلة (موبايل)
+       ========================================================== */
+    function openMobileMenu() {
+      mobileMenu.classList.add('active');
+      menuToggle.setAttribute('aria-expanded', 'true');
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closeMobileMenu() {
+      mobileMenu.classList.remove('active');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+    }
+
+    menuToggle.addEventListener('click', openMobileMenu);
+    mobileClose.addEventListener('click', closeMobileMenu);
+
+    /* إغلاق القائمة عند النقر على رابط */
+    mobileMenu.querySelectorAll('a').forEach(function(link) {
+      link.addEventListener('click', closeMobileMenu);
+    });
+
+    /* ==========================================================
+       7. Scroll Spy - تحديد القسم النشط
+       ========================================================== */
+    function updateActiveLink() {
+      var scrollPos = window.scrollY + 120;
+
+      sections.forEach(function(section) {
+        var top = section.offsetTop;
+        var height = section.offsetHeight;
+        var id = section.getAttribute('id');
+
+        if (scrollPos >= top && scrollPos < top + height) {
+          navLinks.forEach(function(link) {
+            link.classList.remove('active');
+            if (link.getAttribute('href') === '#' + id) {
+              link.classList.add('active');
+            }
+          });
+        }
+      });
+    }
+
+    /* ==========================================================
+       8. Scroll Reveal - ظهور العناصر عند التمرير
+       ========================================================== */
+    var revealElements = document.querySelectorAll('.reveal, .reveal-right, .reveal-left, .reveal-scale');
+
+    var revealObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('revealed');
+        }
+      });
+    }, {
+      threshold: 0.12,
+      rootMargin: '0px 0px -40px 0px'
+    });
+
+    revealElements.forEach(function(el) {
+      revealObserver.observe(el);
+    });
+
+    /* ==========================================================
+       9. تأثير Ripple على الأزرار
+       ========================================================== */
+    document.addEventListener('click', function(e) {
+      var btn = e.target.closest('.ripple');
+      if (!btn) return;
+
+      var existing = btn.querySelector('.ripple-span');
+      if (existing) existing.remove();
+
+      var circle = document.createElement('span');
+      circle.classList.add('ripple-span');
+      var diameter = Math.max(btn.clientWidth, btn.clientHeight);
+      var radius = diameter / 2;
+      var rect = btn.getBoundingClientRect();
+
+      circle.style.width = circle.style.height = diameter + 'px';
+      circle.style.left = (e.clientX - rect.left - radius) + 'px';
+      circle.style.top = (e.clientY - rect.top - radius) + 'px';
+
+      btn.appendChild(circle);
+
+      setTimeout(function() {
+        circle.remove();
+      }, 600);
+    });
+
+    /* ==========================================================
+       10. زر العودة للأعلى
+       ========================================================== */
+    function handleBackToTop() {
+      if (window.scrollY > 500) {
+        backToTop.classList.add('visible');
+      } else {
+        backToTop.classList.remove('visible');
+      }
+    }
+
+    backToTop.addEventListener('click', function() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    /* ==========================================================
+       11. تأثير المؤشر (Cursor Glow)
+       ========================================================== */
+    var cursorVisible = false;
+
+    document.addEventListener('mousemove', function(e) {
+      if (!cursorVisible) {
+        cursorGlow.classList.add('visible');
+        cursorVisible = true;
+      }
+      cursorGlow.style.left = e.clientX + 'px';
+      cursorGlow.style.top = e.clientY + 'px';
+    });
+
+    document.addEventListener('mouseleave', function() {
+      cursorGlow.classList.remove('visible');
+      cursorVisible = false;
+    });
+
+    /* ==========================================================
+       12. نسخ البريد الإلكتروني
+       ========================================================== */
+    copyBtns.forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var email = btn.getAttribute('data-email');
+
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(email).then(function() {
+            showCopyFeedback(btn);
+          }).catch(function() {
+            fallbackCopy(email, btn);
+          });
+        } else {
+          fallbackCopy(email, btn);
+        }
+      });
+    });
+
+    function fallbackCopy(text, btn) {
+      var textarea = document.createElement('textarea');
+      textarea.value = text;
+      textarea.style.position = 'fixed';
+      textarea.style.opacity = '0';
+      document.body.appendChild(textarea);
+      textarea.select();
+      try {
+        document.execCommand('copy');
+        showCopyFeedback(btn);
+      } catch (e) {
+        /* فشل النسخ */
+      }
+      document.body.removeChild(textarea);
+    }
+
+    function showCopyFeedback(btn) {
+      btn.classList.add('copied');
+      btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><polyline points="20 6 9 17 4 12"></polyline></svg>';
+      setTimeout(function() {
+        btn.classList.remove('copied');
+        btn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg>';
+      }, 2000);
+    }
+
+    /* ==========================================================
+       13. العدادات المتحركة (Animated Counters)
+       ========================================================== */
+    var countersStarted = false;
+
+    var counterObserver = new IntersectionObserver(function(entries) {
+      entries.forEach(function(entry) {
+        if (entry.isIntersecting && !countersStarted) {
+          countersStarted = true;
+          animateCounters();
+        }
+      });
+    }, { threshold: 0.5 });
+
+    var counterSection = document.querySelector('.counters-section');
+    if (counterSection) {
+      counterObserver.observe(counterSection);
+    }
+
+    function animateCounters() {
+      var counters = document.querySelectorAll('.counter-number');
+      counters.forEach(function(counter) {
+        var target = parseInt(counter.getAttribute('data-target'), 10);
+        var suffix = counter.getAttribute('data-suffix') || '';
+        var duration = 2000;
+        var startTime = null;
+
+        function step(timestamp) {
+          if (!startTime) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          /* تسهيل الحركة */
+          var easeOut = 1 - Math.pow(1 - progress, 3);
+          var current = Math.floor(easeOut * target);
+          counter.textContent = current + suffix;
+          if (progress < 1) {
+            requestAnimationFrame(step);
+          } else {
+            counter.textContent = target + suffix;
+          }
+        }
+
+        requestAnimationFrame(step);
+      });
+    }
+
+    /* ==========================================================
+       14. تأثير Parallax في الهيرو
+       ========================================================== */
+    var heroPattern = document.querySelector('.hero-pattern');
+
+    function handleParallax() {
+      if (!heroPattern) return;
+      var scrollY = window.scrollY;
+      var heroHeight = document.querySelector('.hero').offsetHeight;
+      if (scrollY <= heroHeight) {
+        heroPattern.style.transform = 'translateY(' + (scrollY * 0.25) + 'px)';
+      }
+    }
+
+    /* ==========================================================
+       15. تحديث السنة في الفوتر
+       ========================================================== */
+    footerYear.textContent = new Date().getFullYear();
+
+    /* ==========================================================
+       16. زر تحميل السيرة الذاتية (جاهز لتغيير الرابط)
+       ========================================================== */
+    if (downloadCvBtn) {
+      downloadCvBtn.addEventListener('click', function(e) {
+        e.preventDefault();
+        /* قم بتغيير هذا الرابط إلى رابط السيرة الذاتية الفعلي */
+        /* مثال: window.open('https://example.com/cv.pdf', '_blank'); */
+        alert('سيتم إضافة رابط تحميل السيرة الذاتية قريبًا إن شاء الله');
+      });
+    }
+
+    /* ==========================================================
+       17. دمج جميع أحداث التمرير في مستمع واحد
+       ========================================================== */
+    var ticking = false;
+
+    window.addEventListener('scroll', function() {
+      if (!ticking) {
+        requestAnimationFrame(function() {
+          updateProgressBar();
+          handleNavScroll();
+          handleBackToTop();
+          updateActiveLink();
+          handleParallax();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    }, { passive: true });
+
+    /* تشغيل مرة عند التحميل */
+    updateProgressBar();
+    handleNavScroll();
+    handleBackToTop();
+    updateActiveLink();
+
+    /* ==========================================================
+       18. إغلاق القائمة بمفتاح Escape
+       ========================================================== */
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && mobileMenu.classList.contains('active')) {
+        closeMobileMenu();
+      }
+    });
+  </script>
+</body>
+</html>
